@@ -5,20 +5,75 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
         <style>
+
+            body, html {
+                height: 100%;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                table-layout: fixed;
+            }
+
             #container > div {
-                border: 1px solid red;
-                width: 5px;
+                border: 1px solid dimgrey;
+                width: 30px;
                 height: 20px;
                 float: left;
+                font-size: 10px;
+                background-color: lightskyblue;
+                margin-right: -1px;
+                margin-bottom: -1px;
+                padding: 2px;
+            }
+
+            #result-table {
+
+            }
+            #result-table tr {
+                border-top: 1px solid dimgrey;
+                border-bottom: 1px solid dimgrey;
+            }
+            #result-table td {
+                padding: 10px;
             }
         </style>
-        <title>JS Bin</title>
+        <title>Timer Demo</title>
     </head>
     <body>
-        <img src="https://m.popkey.co/770e6b/4Mm5x.gif">
-        <input type="text" id="inp1">
-        <button id="btn1">GO!</button>
-        <div id="container"></div>
+        <table>
+            <tr>
+                <td>
+                    <img src="https://m.popkey.co/770e6b/4Mm5x.gif">
+                </td>
+                <td>
+                    <table id="result-table">
+                        <tr>
+                            <td>Current Timeout: </td>
+                            <td id="timeout-idx"></td>
+                        </tr>
+                        <tr>
+                            <td>Click Executed At: </td>
+                            <td id="click-idx"></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="text" id="inp1">
+                    <button id="btn1">GO!</button>
+                    <button id="btn2">Click</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div id="container"></div>
+                </td>
+            </tr>
+        </table>
         <script src="index.js"></script>
     </body>
 </html>
