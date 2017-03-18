@@ -17,11 +17,20 @@
                 table-layout: fixed;
             }
 
+            table td {
+                vertical-align: top;
+            }
+
+            #container {
+                padding: 10px;
+                border: 1px solid dimgrey;
+            }
+
             #container > div {
                 border: 1px solid dimgrey;
                 width: 30px;
                 height: 20px;
-                float: left;
+                display: inline-block;
                 font-size: 10px;
                 background-color: lightskyblue;
                 margin-right: -1px;
@@ -43,37 +52,76 @@
         <title>Timer Demo</title>
     </head>
     <body>
+        <div>
+            <img src="https://m.popkey.co/770e6b/4Mm5x.gif">
+        </div>
+
         <table>
+            <colgroup>
+                <col width="15%">
+                <col width="30%">
+                <col width="30%">
+                <col width="15%">
+                <col width="10%">
+            </colgroup>
             <tr>
-                <td>
-                    <img src="https://m.popkey.co/770e6b/4Mm5x.gif">
-                </td>
-                <td>
-                    <table id="result-table">
-                        <tr>
-                            <td>Current Timeout: </td>
-                            <td id="timeout-idx"></td>
-                        </tr>
-                        <tr>
-                            <td>Click Executed At: </td>
-                            <td id="click-idx"></td>
-                        </tr>
-                    </table>
-                </td>
+                <td colspan="2"><h4>Experiment 1: Timeouts</h4></td>
+                <td colspan="1"><h4>Interaction</h4></td>
+                <td colspan="2"><h4>Logs</h4></td>
             </tr>
             <tr>
-                <td colspan="2">
-                    <input type="text" id="inp1">
+                <td>
+                    Delay: <br>
+                    Iterations: <br>
                     <button id="btn1">GO!</button>
+                </td>
+                <td>
+                    <input type="text" id="inp_delay" value="100"><br>
+                    <input type="text" id="inp_iter" value="100">
+                </td>
+                <td>
+                    <input type="text" id="inp1">
                     <button id="btn2">Click</button>
                 </td>
+                <td>
+                    Current Timeout: <br>
+                    Click Executed At: <br>
+                </td>
+                <td>
+                    <div id="timeout-idx"></div>
+                    <div id="click-idx"></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><h4>Experiment 2: Click Events</h4></td>
+                <td colspan="1"><h4>Interaction</h4></td>
+                <td colspan="2"><h4>Logs</h4></td>
             </tr>
             <tr>
-                <td colspan="2">
-                    <div id="container"></div>
+                <td>
+                    Delay: <br>
+                    <button id="btn3">GO!</button>
+                </td>
+                <td>
+                    <input type="text" id="inp_delay2" value="100">
+                </td>
+                <td>
+                    <input type="text">
+                    <button id="btn4">Run Interval</button>
+                </td>
+                <td>
+                    Current Interval: <br>
+                    Current Click: <br>
+                </td>
+                <td>
+                    <div id="interval-idx"></div>
+                    <div id="click-idx2"></div>
                 </td>
             </tr>
         </table>
+        <h3>Event Queue</h3>
+        <div id="container"></div>
         <script src="index.js"></script>
     </body>
 </html>

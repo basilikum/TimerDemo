@@ -1,50 +1,81 @@
 $(document).ready(function () {
-    var globalIdx = 0;
+    var timeoutIdx = 0,
+        clickIndex = 0,
+        intIndex = 0;
 
     $('#btn1').click(go);
+    $('#btn3').click(goClick);
     $('#btn2').click(userClick);
+    $('#btn4').click(startInterval);
 
     function go() {
         $('#inp1').focus();
-        queueUpTimeouts(1000, 100);
+        var delay = parseInt($('#inp_delay').val());
+        var iter = parseInt($('#inp_iter').val());
+        queueUpTimeouts(iter, delay);
+    }
+
+    function goClick() {
+        var delay = parseInt($('#inp_delay2').val());
+        var index = clickIndex++;
+        $('#click-idx2').text(index);
+        console.log('click start', index);
+        addOneItem(index);
+        block(delay);
     }
 
     function userClick() {
-        $('#click-idx').text(globalIdx);
-        console.log('clicked', globalIdx);
+        $('#click-idx').text(timeoutIdx);
+        console.log('clicked', timeoutIdx);
     }
 
-    function queueUpTimeouts(num, miliseconds) {
+    function startInterval() {
+        setInterval(function () {
+            var index = intIndex++;
+            $('#interval-idx').text(index);
+            console.log('interval', index);
+        }, 1000);
+    }
+
+    function queueUpTimeouts(num, delay) {
         populateContainer(num);
         for (var i = 0; i < num; i++) {
-            setTimeout(block.bind(null, i, miliseconds), 0);
+            setTimeout(function () {
+                startTimeout(delay);
+            }, 0);
         }
     }
 
-    function block(idx, miliseconds) {
-        globalIdx = idx;
-        $('#timeout-idx').text(idx);
-        console.log('timeout start', idx);
+    function startTimeout(delay) {
+        var index = timeoutIdx++;
+        console.log('timeout start', index);
+        $('#timeout-idx').text(index);
+        block(delay);
+        removeOneItem();
+    }
+
+    function block(delay) {
         var d1 = new Date(), d2;
         while (true) {
             d2 = new Date();
-            if ((d2 - d1) >= miliseconds) {
+            if ((d2 - d1) >= delay) {
             break;
             }
         }
-        removeOneItem();
-        //console.log('end block');
     }
 
     function populateContainer(items) {
-        var container = $('#container');
-        container.empty();
+        $('#container').empty();
         for (var i = 0; i < items; i++) {
-            container.append($('<div>' + i + '</div>'));
+            addOneItem(i);
         }
     }
 
     function removeOneItem() {
         $('#container > div').first().remove();
+    }
+
+    function addOneItem(idx) {
+        $('#container').append($('<div>' + idx + '</div>'));
     }
 });
