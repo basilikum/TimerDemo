@@ -21,6 +21,13 @@
                 vertical-align: top;
             }
 
+            button {
+                cursor: pointer;
+                background-color: lightgreen;
+                padding: 10px 20px;
+                border: 1px solid dimgrey;
+            }
+
             #container {
                 padding: 10px;
                 border: 1px solid dimgrey;
@@ -65,14 +72,14 @@
                 <col width="10%">
             </colgroup>
             <tr>
-                <td colspan="2"><h4>Experiment 1: Timeouts</h4></td>
+                <td colspan="2"><h4>Adding Tasks to the Event Queue</h4></td>
                 <td colspan="1"><h4>Interaction</h4></td>
                 <td colspan="2"><h4>Logs</h4></td>
             </tr>
             <tr>
                 <td>
-                    Delay: <br>
-                    Iterations: <br>
+                    Duration of one task [ms]: <br>
+                    Number of Tasks: <br>
                     <button id="btn1">GO!</button>
                 </td>
                 <td>
@@ -84,7 +91,7 @@
                     <button id="btn2">Click</button>
                 </td>
                 <td>
-                    Current Timeout: <br>
+                    Current Task: <br>
                     Click Executed At: <br>
                 </td>
                 <td>
@@ -92,7 +99,7 @@
                     <div id="click-idx">&nbsp;</div>
                 </td>
             </tr>
-
+            <!--
             <tr>
                 <td colspan="2"><h4>Experiment 2: Click Events</h4></td>
                 <td colspan="1"><h4>Interaction</h4></td>
@@ -118,7 +125,7 @@
                     <div id="interval-idx">&nbsp;</div>
                     <div id="click-idx2">&nbsp;</div>
                 </td>
-            </tr>
+            </tr>-->
         </table>
         <h3>Event Queue</h3>
         <div id="container"></div>

@@ -12,6 +12,7 @@ $(document).ready(function () {
         $('#inp1').focus();
         var delay = parseInt($('#inp_delay').val());
         var iter = parseInt($('#inp_iter').val());
+        timeoutIdx = 0;
         queueUpTimeouts(iter, delay);
     }
 
